@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <title>FORM REQUIREMENTS</title>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script language="JavaScript" type="text/javascript">
+        function dynamicdropdown(listindex)
+        {
+        switch(listindex)
+        {
+        case "B.tech":
+            document.getElementById("status").option[0]=new Option("B.tech mechanical engineering","B.tech mechanical engineering");
+            document.getElementById("status").option[1]=new Option("B.tech computer science","B.tech computer science");
+            document.getElementById("status").option[2]=new Option("B.tech civil engineering","B.tech civil engineering");
+            document.getElementById("status").option[3]=new Option("B.tech electrical engineering","B.tech electrical engineering");
+            break;
+
+        case "Bachelor's degree":
+            document.getElementById("status").option[0]=new.Option("Bsc.Computer Science","Bsc.Computer Science");
+            document.getElementById("status").option[1]=new.Option("Bsc.Electronics","Bsc.Electronics");
+            document.getElementById("status").option[2]=new Option("Bsc. Physics","Bsc.Physics");
+            document.getElementById("status").option[3]=new Option("Bca. Computer Application","Bca. Computer Application");
+            break;
+
+        case "M.tech":
+            document.getElementById("status").option[0]=new Option("M.tech mechanical engineering","Mt.ech mechanical engineering");
+            document.getElementById("status").option[1]=new Option("M.tech computer science","M.tech computer science");
+            document.getElementById("status").option[2]=new Option("M.tech civil engineering","M.tech civil engineering");
+            document.getElementById("status").option[3]=new Option("M.tech electrical engineering","M.tech electrical engineering");
+            break;
+
+        case "Master's":
+            document.getElementById("status").option[0]=new.Option("Msc.Computer Science","Msc.Computer Science");
+            document.getElementById("status").option[1]=new.Option("Msc.Electronics","Msc.Electronics");
+            document.getElementById("status").option[2]=new Option("Msc. Physics","Msc.Physics");
+            document.getElementById("status").option[3]=new Option("Mca. Computer Application","Mca. Computer Application");
+            break;
+
+        case "Polytechnic":
+            document.getElementyId("status").option[0]=new.Option("Electrical and Electronics Engineering","Electrical and Electronics Engineering");
+            document.getElementyId("status").option[1]=new.Option("Automobile Engineering","Automobile Engineering");
+            document.getElementyId("status").option[2]=new.Option("Diploma in Aeronautical Engineering","Diploma in Aeronautical Engineering");
+            document.getElementyId("status").option[3]=new.Option("Diploma in Agriculture","Diploma in Agriculture");
+            break;
+        }
+
+        return True;
+    }
+    </script>
+</head>
+<body>
+<form class="p-3 shadow">
+    {% csrf_token %}
+    <input type="button"  onclick="document.getElementById('form1').style.display = 'block';this.style.display = 'none'"  class="btn btn-light" value="Click Here!" >
+</form>
+<div class="container">
+     <div id="form1" style="display:None;">
+     <form style="padding-left:350px;" method="post" action="bio" >
+        {% csrf_token %}
+           <div class="col-md-6 mb-3">
+               <div class="form-group">
+                   <label for="exampleInputEmail1">Name</label>
+                   <input type="text" name="name" placeholder="Username" required="" >
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">DOB</label>
+                   <input type="date" name="DOB" placeholder="Enter date of birth" required="">
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">Age</label>
+                   <input type="text" name="Age" placeholder="Enter Your Age" required="">
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">Gender</label>
+                   <input type="radio" name="Gender" value="female"><label>Female</label><br>
+                   <input type="radio" name="Gender" value="male"><label>Male</label>
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">Phone Number</label>
+                   <input type="text" name="phone" placeholder="Enter Your Phone Number" required="">
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">Email</label>
+                   <input type="text" name="email" placeholder="Enter Email Id" required="">
+               </div>
+
+               <div class="form-group">
+                   <label for="chk">Address</label>
+                   <input type="textarea" name="address" placeholder="Enter address" required="">
+               </div>
+
+               <div class="form-group">
+                   <label for="chk" id="dropdownmenubutton">Department</label>
+                       <select class="btn btn-warning" id="source" name="department" onchange="javascript: dynamicdropdown(this.options[this.selectedIndex].value);" >
+                           <option class="dropdown-item" value="">Select department</option>
+                           <option class="dropdown-item" value="B.tech">B.tech</option>
+                           <option class="dropdown-item" value="Bachelor's degree">Bachelor's degree</option>
+                           <option class="dropdown-item" value="M.tech">M.tech</option>
+                           <option class="dropdown-item" value="Master's">Master's</option>
+                           <option class="dropdown-item" value="Polytechnic">Polytechnic</option>
+                       </select>
+               </div>
+
+             <label for="chk">Materials Provide</label>
+               <div class="form-check">
+                       <input class="form-check-input" type="checkbox" name="material" value="debit" id="flexCheckDefault">
+                       <label class="form-check-label" for="flexCheckDefault">
+                        Debit Card
+                       </label>
+               </div>
+               <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="material" value="credit" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Credit Card
+                      </label>
+               </div>
+               <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="material" value="cheque" id="flexCheckChecked" checked>
+                      <label class="form-check-label" for="flexCheckChecked">
+                        Online payment
+                      </label>
+               </div>
+
+               <br>
+              <div class="text-center" style="padding-bottom:50px;">
+                  <button  type="submit" class="btn btn-light">Submit</br>
+              </div>
+           </div>
+       </form>
+  </div>
+</div>
+ </div>
+{% for msg in messages %}
+<center><h2>{{msg}}</h2>
+    <a href="logout" type="button"   class="btn btn-light" >Logout</a>
+<br><a href="/">Back To Home Page</a></center>
+
+{% endfor %}
+
+
+
+
+
+
+</body>
+</html>
